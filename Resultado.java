@@ -1,6 +1,6 @@
 public class Resultado {
     public static void main(String[] args) {
-        int cantidad = 10;
+        int cantidad =10;
 
         int[] aleatorio = Generador.generarMatrizAleatoria(cantidad);
         int[] ascendente = Generador.generarMatrizAscendente(cantidad);

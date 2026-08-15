@@ -43,16 +43,44 @@ public class Seleccion {
         int[] ascendente = Generador.generarMatrizAscendente(cantidad);
         int[] descendente = Generador.generarMatrizDescendente(cantidad);
 
-        long tiempoAleatorio = medirTiempo(aleatorio.clone());
-        long tiempoAscendente = medirTiempo(ascendente.clone());
-        long tiempoDescendente = medirTiempo(descendente.clone());
-
         System.out.println("\n ORDENAMIENTO POR SELECCIÓN ");
         System.out.println("Cantidad de elementos: " + cantidad);
 
-        System.out.println("Aleatorio: " + tiempoAleatorio + " nanosegundos");
-        System.out.println("Ascendente: " + tiempoAscendente + " nanosegundos");
-        System.out.println("Descendente: " + tiempoDescendente + " nanosegundos");
+        // Aleatorio
+        System.out.println("\nAleatorio - Antes:");
+        Generador.mostrarResumen(aleatorio);
+        int[] arrAleatorio = aleatorio.clone();
+        long start = System.nanoTime();
+        ordenar(arrAleatorio);
+        long tiempoAleatorio = System.nanoTime() - start;
+        System.out.println("Aleatorio - Después:");
+        Generador.mostrarResumen(arrAleatorio);
+
+        // Ascendente
+        System.out.println("\nAscendente - Antes:");
+        Generador.mostrarResumen(ascendente);
+        int[] arrAsc = ascendente.clone();
+        start = System.nanoTime();
+        ordenar(arrAsc);
+        long tiempoAscendente = System.nanoTime() - start;
+        System.out.println("Ascendente - Después:");
+        Generador.mostrarResumen(arrAsc);
+
+        // Descendente
+        System.out.println("\nDescendente - Antes:");
+        Generador.mostrarResumen(descendente);
+        int[] arrDesc = descendente.clone();
+        start = System.nanoTime();
+        ordenar(arrDesc);
+        long tiempoDescendente = System.nanoTime() - start;
+        System.out.println("Descendente - Después:");
+        Generador.mostrarResumen(arrDesc);
+
+        System.out.println();
+        System.out.println("Tiempos:");
+        System.out.println("Aleatorio: " + tiempoAleatorio + " nanosegundos (" + (tiempoAleatorio/1_000_000.0) + " ms)");
+        System.out.println("Ascendente: " + tiempoAscendente + " nanosegundos (" + (tiempoAscendente/1_000_000.0) + " ms)");
+        System.out.println("Descendente: " + tiempoDescendente + " nanosegundos (" + (tiempoDescendente/1_000_000.0) + " ms)");
 
         scanner.close();
     }
